@@ -1,11 +1,17 @@
 import styled  from "styled-components";
 
 
-const Container = styled.aside `
+export  const Container = styled.aside `
   background-color: ${(props) => props.theme.colors.background};
-  width: 36vw;
+  width: 360px;
   height: 100vh;
   overflow-y: auto;
 `;
 
-export default Container;
+export const Seach = styled.section`
+display: flex;
+flex-direction: column;
+justify-content: center;
+background-color: #ffffff;
+padding: 16px;
+`;
