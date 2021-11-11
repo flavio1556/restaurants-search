@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import logo from '../../assets/logo.svg'
 import TextField, {Input} from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
-import restaurante from '../../assets/restaurante-fake.png'
 import  SliderSeach from '../../components/Slider/Index';
-import {Card} from '../../components'
-
-import Slider from "react-slick";
+import { RestaurantCard} from '../../components'
 
 import  {Container, Seach, Logo, Wrapper,Map, CarouselTitle} from "./styles";
 
@@ -31,7 +28,9 @@ const Home  = () => {
                       Na sua Área
                      </CarouselTitle>
                    <SliderSeach/>
-                 </Seach>                  
+                 </Seach>   
+                 <RestaurantCard>
+                   </RestaurantCard>               
               </Container>
               <Map/>
     </Wrapper>

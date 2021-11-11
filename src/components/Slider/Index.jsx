@@ -1,5 +1,5 @@
 import React  from "react";
-import  {Carousel} from "../../pages/Home/styles";
+import  {Carousel} from "./styles";
 
 import restaurante from '../../assets/restaurante-fake.png'
 import {Card} from "../../components/index"

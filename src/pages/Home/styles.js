@@ -1,5 +1,4 @@
 import styled  from "styled-components";
-import Slider from "react-slick";
  export const Wrapper = styled.div `
    display: flex;
    flex-direction: row;
@@ -36,11 +35,7 @@ export const CarouselTitle = styled.h1`
   line-height: 29px;
   margin: 16px 0;
 `;
-export const Carousel = styled(Slider)`
- .slick-slide{
-   margin-right: 16px;
- }
-`;
+
 
 export const SliderStyled = styled.img`
 margin: 2px;
