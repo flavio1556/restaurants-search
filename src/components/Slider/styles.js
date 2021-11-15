@@ -4,6 +4,6 @@ import Slider from "react-slick";
 
 export const Carousel = styled(Slider)`
 .slick-slide{
-  margin-right: 16px;
+  margin-right: 10px;
 }
 `;

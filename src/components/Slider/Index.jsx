@@ -5,29 +5,27 @@ import restaurante from '../../assets/restaurante-fake.png'
 import {Card} from "../../components/index"
 
 
-const SliderSeach = () =>{
+const SliderSeach = ({restaurants}) =>{
+  console.log("slider",restaurants);
   const settings = {
-    dots: true,
+    dots: false,
+    autoplay: true,
     infinite: true,
     speed: 300,
     slidesToShow: 4,
     slidesToScroll: 4,
     adaptiveHeight: true,
   };
-  return(         
-    <> 
- 
-             <Carousel {... settings}>              
-               <Card photo={restaurante} title= "Nome"/>
-               <Card photo={restaurante} title= "Nome"/>
-               <Card photo={restaurante} title= "Nome"/>
-               <Card photo={restaurante} title= "Nome"/>
-               <Card photo={restaurante} title= "Nome"/>
-             </Carousel>       
+  return(
+    <>
+
+             <Carousel {... settings}>
+               {restaurants.map((restaurant) => <Card key={restaurant.place_id}  photo={restaurant.photos? restaurant.photos[0].getUrl(): restaurante} title={restaurant.name}  />)}
+             </Carousel>
     </>
   )
 }
- 
+
  export default  SliderSeach;
 
 
