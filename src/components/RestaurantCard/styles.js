@@ -38,11 +38,10 @@ export const Address = styled.span `
 
 `;
 export const RestaurantPhoto = styled.img`
+display:  ${(props) => props.imageLoaded  ? 'block' : 'none' };
   width: 100px;
   height: 100px;
-  min-width: 90px;
-  min-height: 90%;
+  object-fit: cover;
   border-radius: 5px;
-  background-image: url(${(props)=> props.photo});
   background-position: center;
 `;

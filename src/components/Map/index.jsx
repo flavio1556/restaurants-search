@@ -26,21 +26,20 @@ export const MapContainer = (props) =>{
 
    function getRestaurantById(placeId){
     const service = new google.maps.places.PlacesService(map)
-
+    dispatch(setRestaurant(null));
     const request = {
      placeId: placeId,
      fields: ['name', 'opening_hours', 'formatted_address', 'formatted_phone_number'],
      };
      service.getDetails(request, (place, status) =>{
        if(status === google.maps.places.PlacesServiceStatus.OK){
-         console.log(place)
          dispatch(setRestaurant(place));
        };
      } )
    }
    function searchByQuery (query) {
     const service = new google.maps.places.PlacesService(map)
-
+   dispatch(setRestaurants([]))
     const request = {
       location: map.center,
       radius: '200 ',
@@ -53,10 +52,9 @@ export const MapContainer = (props) =>{
        };
      } )
   }
-  function seachNearby(map, center) {
+  function searchNearby(map, center) {
     const service = new google.maps.places.PlacesService(map)
-
-
+    dispatch(setRestaurants([]))
     const request = {
       location: center,
       radius: '2000',
@@ -70,15 +68,11 @@ export const MapContainer = (props) =>{
     });
 
   }
-  function onMapReady(_, map){
+
+  function onMapReady(_, map) {
     setMap(map);
-    seachNearby(map, map.center)
-    console.log("chegou Ready");
-  }
-  function onMapReady2(_, map){
-    setMap(map);
-    seachNearby(map, map.center)
-    console.log("chegou Recenter");
+    console.log(map);
+    searchNearby(map, map.center);
   }
   return (
         <Map google={google}
