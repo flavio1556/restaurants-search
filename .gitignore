@@ -1,24 +1,69 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+Pular para o conteúdo
+Procure ou pule para...
+Pedido de puxars
+Questões
+Mercado
+Explorar
 
-# dependencies
+@flavio1556
+patrick-narciso
+/
+restaurantes-pesquisa
+Público
+1
+43
+52
+Código
+Questões
+Pedidos de puxar
+12
+Ações
+Projetos
+Wiki
+Segurança
+Insights
+restaurantes-pesquisa/.gitignore
+@patrick-narciso
+patrick-narciso adiciona mapa com google-maps-react
+Último compromisso 843c66d em 26 jul 2020
+ História
+ 1 contribuinte
+24 linhas (19 sloc) 315 Bytes
+
+# Veja https://help.github.com/articles/ignoring-files/ para saber mais sobre ignorar arquivos.
+
+# dependências
 /node_modules
 /.pnp
 .pnp.js
-
-# testing
-/coverage
-
-# production
-/build
 .env
 
+# teste
+/cobertura
+
+# produção
+/construir
+
 # misc
-.DS_Store
+. DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+npm-depuração.log*
+fio-depuração.log*
+erro de fio.log*
+© 2021 GitHub, Inc.
+Termos
+Privacidade
+Segurança
+Estado
+Docs
+Entrar em contato com o GitHub
+Precificação
+API
+Formação
+Blogue
+Sobre
+Carregando completo
