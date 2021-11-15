@@ -25,6 +25,7 @@ export const MapContainer = (props) =>{
       };
 
       service.getDetails(request, (place, status) => {
+
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           dispatch(setRestaurant(place));
         }
@@ -32,6 +33,7 @@ export const MapContainer = (props) =>{
     },
     [google, map, dispatch]
   );
+
 
   const searchByQuery = useCallback(
     (map, query) => {
@@ -45,20 +47,18 @@ export const MapContainer = (props) =>{
         query,
       };
 
-      service.textSearch(request, (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
+      service.textSearch(request, (results, status) =>{
+        if(status === google.maps.places.PlacesServiceStatus.OK){
           dispatch(setRestaurants(results));
-        }
-      });
+        };
+      } )
     },
     [dispatch, google]
   );
 
-
-
   useEffect (() => {
     if(query){
-     searchByQuery(query);
+      searchByQuery(map, query);
     }
   }, [searchByQuery, query, map]);
 
@@ -67,6 +67,7 @@ export const MapContainer = (props) =>{
       getRestaurantById(placeId)
     }
   }, [placeId, getRestaurantById])
+
   const searchNearby = (map, center) => {
     const service = new google.maps.places.PlacesService(map);
 
@@ -77,6 +78,7 @@ export const MapContainer = (props) =>{
     };
 
     service.nearbySearch(request, (results, status) => {
+
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         dispatch(setRestaurants(results));
       }
