@@ -70,10 +70,10 @@ const Home  = () => {
               >
                 {restaurantSelected?(
                   <>
-                         <ModalTitle> {restaurantSelected ?.name}</ModalTitle>
-                         <ModalContent>{restaurantSelected ?.formatted_address}</ModalContent>
-                         <ModalContent>{restaurantSelected ?.formatted_phone_number}</ModalContent>
-                         <ModalContent>{restaurantSelected ?.opening_hours ?.open_now? "Aberto agora :=)" : "Fechado no momento :-("}</ModalContent>
+                         <ModalTitle> {restaurantSelected ?.name } </ModalTitle>
+                         <ModalContent>{restaurantSelected ?.formatted_address } </ModalContent>
+                         <ModalContent>{ restaurantSelected ?.formatted_phone_number } </ModalContent>
+                         <ModalContent>{restaurantSelected ?.opening_hours ?.open_now? "Aberto agora :=)" : "Fechado no momento :-(" } </ModalContent>
                   </>
                 )
               :
