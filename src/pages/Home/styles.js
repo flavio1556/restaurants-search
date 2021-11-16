@@ -2,6 +2,7 @@ import styled  from "styled-components";
  export const Wrapper = styled.div `
    display: flex;
    flex-direction: row;
+
  `;
 
 export  const Container = styled.aside `
@@ -9,6 +10,7 @@ export  const Container = styled.aside `
   width: 28vw;
   height: 100vh;
   overflow-y: auto;
+
 `;
 
 export const Seach = styled.section`

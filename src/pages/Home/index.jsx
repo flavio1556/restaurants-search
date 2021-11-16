@@ -5,25 +5,81 @@ import TextField, {Input} from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 import  SliderSeach from '../../components/Slider/Index';
 import { RestaurantCard, Modal, MapContainer, Loader, Skeleton} from '../../components'
-
 import  {Container, Seach, Logo, Wrapper, CarouselTitle, Map, ModalTitle,ModalContent} from "./styles";
 
 const Home  = () => {
 
-  const  [inputValue, setValue] = useState('');
+  const  [inputValue, setValue] = useState(' ');
   const [query, setQuery] = useState(null);
   const [modalOpened, setModalOpen] = useState(false);
   const [placeId, SetPlaceId] = useState(null)
   const  { restaurants, restaurantSelected} = useSelector((state) => state.restaurants)
-
+   let hasRestaurant = restaurants.length > 0
 
   function handleOpenModal(placeId){
     SetPlaceId(placeId);
     setModalOpen(true);
   }
+
    function changeInput (e){
     setValue(e.target.value)
     setQuery(inputValue)
+   }
+
+   function renderSlider () {
+     if(hasRestaurant){
+       return(
+        <>
+        <CarouselTitle>
+         Na sua Área
+        </CarouselTitle>
+       <SliderSeach  restaurants={ restaurants} />
+       </>
+       )
+     }
+     else{
+       return (
+         <>
+         <Loader />
+         </>
+       )
+     }
+   }
+   function  renderRestaurantCard() {
+    if(!hasRestaurant) return null
+    return (
+      <>
+                {  restaurants.map((restaurant) =>(
+                    <RestaurantCard
+                       key={restaurant.place_id}
+                      onClick={() => handleOpenModal(restaurant.place_id)}
+                      restaurant={restaurant} />
+                 ))}
+      </>
+    )
+   }
+
+   function renderModal(){
+     if(restaurantSelected){
+       return (
+         <>
+                     <ModalTitle> {restaurantSelected.name } </ModalTitle>
+                     <ModalContent>{restaurantSelected.formatted_address } </ModalContent>
+                     <ModalContent>{ restaurantSelected.formatted_phone_number } </ModalContent>
+                     <ModalContent>{restaurantSelected.opening_hours ?.open_now ? "Aberto agora :=)" : "Fechado no momento :-(" } </ModalContent>
+         </>
+       )
+     }
+     else{
+       return (
+         <>
+                <Skeleton width="10px" heigth="10px" />
+                <Skeleton width="10px" heigth="10px" />
+                <Skeleton width="10px" heigth="10px" />
+                <Skeleton width="10px" heigth="10px" />
+         </>
+       )
+     }
    }
 
   return (
@@ -37,28 +93,12 @@ const Home  = () => {
                             trailingIcon={<MaterialIcon role="button" icon="search"/>}      >
                     <Input
                             value={inputValue}
-                            onChange={changeInput} />
+                            onChange={changeInput}
+                     />
                      </TextField>
-                  {restaurants.length > 0 ? (
-                    <>
-                     <CarouselTitle>
-                      Na sua Área
-                     </CarouselTitle>
-                    <SliderSeach  restaurants={ restaurants} />
-                    </>
-                  ) : (
-
-                    <Loader />
-
-                  )
-                }
-
+                     {renderSlider()}
                  </Seach>
-                 {  restaurants.map((restaurant) =>(
-                    <RestaurantCard
-                      onClick={() => handleOpenModal(restaurant.place_id)}
-                      restaurant={restaurant} />
-                 ))}
+                 {renderRestaurantCard()}
               </Container>
               <Map>
                 <MapContainer query ={query} placeId={placeId}>
@@ -68,24 +108,7 @@ const Home  = () => {
                 open={modalOpened} onClose={() =>
                 setModalOpen(!modalOpened)}
               >
-                {restaurantSelected?(
-                  <>
-                         <ModalTitle> {restaurantSelected ?.name } </ModalTitle>
-                         <ModalContent>{restaurantSelected ?.formatted_address } </ModalContent>
-                         <ModalContent>{ restaurantSelected ?.formatted_phone_number } </ModalContent>
-                         <ModalContent>{restaurantSelected ?.opening_hours ?.open_now? "Aberto agora :=)" : "Fechado no momento :-(" } </ModalContent>
-                  </>
-                )
-              :
-              (
-                <>
-                <Skeleton width="10px" heigth="10px" />
-                <Skeleton width="10px" heigth="10px" />
-                <Skeleton width="10px" heigth="10px" />
-                <Skeleton width="10px" heigth="10px" />
-                </>
-              )
-                }
+                 {renderModal()}
               </Modal>
     </Wrapper>
 

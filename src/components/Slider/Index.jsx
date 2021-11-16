@@ -6,7 +6,6 @@ import {Card} from "../../components/index"
 
 
 const SliderSeach = ({restaurants}) =>{
-  console.log("slider",restaurants);
   const settings = {
     dots: false,
     autoplay: true,

@@ -6,7 +6,11 @@ import { setRestaurants, setRestaurant } from '../../redux/modules/restaurants';
 
 
 export const MapContainer = (props) =>{
-
+  const containerStyle = {
+    position: 'relative',
+    width: '100%',
+    height: '100%'
+  }
    const dispatch = useDispatch();
    const  { restaurants} = useSelector((state) => state.restaurants)
    const {google, query,  placeId} = props;
@@ -70,7 +74,6 @@ export const MapContainer = (props) =>{
 
   const searchNearby = (map, center) => {
     const service = new google.maps.places.PlacesService(map);
-
     const request = {
       location: center,
       radius: '20000',
@@ -86,15 +89,18 @@ export const MapContainer = (props) =>{
   };
   function onMapReady(_, map) {
     setMap(map);
-    console.log(map);
     searchNearby(map, map.center);
   }
   return (
         <Map google={google}
                   centerAroundCurrentLocation
                   onReady={onMapReady}
-                  onRecenter={onMapReady}
+                  onCenterChanged={onMapReady}
                   zoom={15}
+                  scrollwheel
+
+                  style={{ height: "100vh", width: "100%" }}
+
                   {...props}
           >
             {restaurants.map( (restaurant) => (
