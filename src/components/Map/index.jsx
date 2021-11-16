@@ -75,8 +75,7 @@ export const MapContainer = (props) =>{
       radius: '20000',
       type: ['restaurant'],
     };
-
-    service.nearbySearch(request, (results, status) => {
+;    service.nearbySearch(request, (results, status) => {
 
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         dispatch(setRestaurants(results));

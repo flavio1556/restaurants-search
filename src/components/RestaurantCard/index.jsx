@@ -24,7 +24,7 @@ const RestaurantCard = ({restaurant, onClick}) => {
           onLoad={() => setImageLoaded(true)}
           />
           {!imageLoaded  &&
-            <Skeleton  width="100px" heigth="100px" />
+            <Skeleton  width="10vh" heigth="10vh" />
           }
      </Restaurant>
   )

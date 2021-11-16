@@ -1,4 +1,6 @@
 import styled  from "styled-components";
+import px2vw from "../../styles/px2vw";
+
  export const Wrapper = styled.div `
    display: flex;
    flex-direction: row;
@@ -7,7 +9,7 @@ import styled  from "styled-components";
 
 export  const Container = styled.aside `
   background-color: ${(props) => props.theme.colors.background};
-  width: 28vw;
+  width: 28%;
   height: 100vh;
   overflow-y: auto;
 
@@ -18,10 +20,10 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 background-color: #ffffff;
-padding: 16px;
+padding: 1em;
 `;
 export const Logo = styled.img`
-   margin-bottom: 15px;
+   margin-bottom: 5%;
 `;
 
 export const Map = styled.div`
@@ -31,17 +33,36 @@ export const Map = styled.div`
 export const CarouselTitle = styled.h1`
  font-family: ${(props) => props.theme.fonts.regular};
  color: ${(props) => props.theme.colors.text};
- //font-family: 'Roboto', sans-serif;
-  font-size: 24px;
+  font-size: 2em;
   font-weight: bold;
   line-height: 29px;
-  margin: 16px 0;
+  margin-rigth: 16px 0;
+  padding: 0.25em;
+  @media only screen and (max-width: 959px) {
+
+    font-size: 2em;
+
+}
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+  font-size: 2.2em;
+
+}
+@media only screen and (max-width: 767px) {
+
+  font-size: 1.5em;
+
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  font-size: 1em;
+}
+@media only screen and (max-width: 479px) {
+
+  font-size: 0.7em;
+
+}
 `;
 
-
-export const SliderStyled = styled.img`
-margin: 2px;
-`;
 
 export const  ModalTitle =  styled.p `
   margin-bottom: 10px;
@@ -60,4 +81,19 @@ export const ModalContent = styled.div`
   line-height: 19px;
   font-size:  16px;
   font-weight: normal;
+`;
+export const ModalFechar = styled.button`
+  color: #aaaaaa;
+  float: left;
+  align-self: flex-end;
+  font-size: 1em;
+  font-weight: bold;
+  width: cover;
+  margin: 1em;
+  margin-top: 0;
+  padding: 0.25em ;
+  border: 2px, solid black;
+  font-family: ${(props) => props.theme.fonts.regular};
+  color: red;
+  background-color: #ffffff;
 `;

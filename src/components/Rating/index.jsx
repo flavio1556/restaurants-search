@@ -7,7 +7,6 @@ const Rating = ({rating}) => {
     <RattingStyled>
      <ReactStars
       count={5}
-      size={24}
       isHalf
       value={rating}
       edit={false}

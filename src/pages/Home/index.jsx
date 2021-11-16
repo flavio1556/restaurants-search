@@ -3,14 +3,17 @@ import {  useSelector } from 'react-redux';
 import logo from '../../assets/logo.svg'
 import TextField, {Input} from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
+import FormControl, { useFormControl } from '@mui/material/FormControl';
+import Box from '@mui/material/Box';
 import  SliderSeach from '../../components/Slider/Index';
 import { RestaurantCard, Modal, MapContainer, Loader, Skeleton} from '../../components'
-import  {Container, Seach, Logo, Wrapper, CarouselTitle, Map, ModalTitle,ModalContent} from "./styles";
+import  {Container, Seach, Logo, Wrapper, CarouselTitle, Map, ModalTitle,ModalContent, ModalFechar} from "./styles";
 
 const Home  = () => {
 
   const  [inputValue, setValue] = useState(' ');
   const [query, setQuery] = useState(null);
+  const [icon, setIcon] = useState(true);
   const [modalOpened, setModalOpen] = useState(false);
   const [placeId, SetPlaceId] = useState(null)
   const  { restaurants, restaurantSelected} = useSelector((state) => state.restaurants)
@@ -63,6 +66,7 @@ const Home  = () => {
      if(restaurantSelected){
        return (
          <>
+                     <ModalFechar onClick={() => setModalOpen(!modalOpened)}> </ModalFechar>
                      <ModalTitle> {restaurantSelected.name } </ModalTitle>
                      <ModalContent>{restaurantSelected.formatted_address } </ModalContent>
                      <ModalContent>{ restaurantSelected.formatted_phone_number } </ModalContent>
@@ -81,17 +85,22 @@ const Home  = () => {
        )
      }
    }
-
   return (
     <Wrapper>
               <Container>
                  <Seach>
                     <Logo src={logo} alt="Logo do Restaurante"/>
+
+
                     <TextField
+                          sx={{ width: "100%"}}
                             label='Pesquisar'
                              outlined
-                            trailingIcon={<MaterialIcon role="button" icon="search"/>}      >
+                            trailingIcon={icon ?  <MaterialIcon role="button" icon="search" /> : null}
+                               >
                     <Input
+                            onBlur={() => setIcon(true)}
+                            onClick={() => setIcon(false)}
                             value={inputValue}
                             onChange={changeInput}
                      />
