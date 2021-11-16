@@ -6,11 +6,7 @@ import { setRestaurants, setRestaurant } from '../../redux/modules/restaurants';
 
 
 export const MapContainer = (props) =>{
-  const containerStyle = {
-    position: 'relative',
-    width: '100%',
-    height: '100%'
-  }
+
    const dispatch = useDispatch();
    const  { restaurants} = useSelector((state) => state.restaurants)
    const {google, query,  placeId} = props;
