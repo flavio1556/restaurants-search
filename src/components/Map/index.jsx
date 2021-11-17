@@ -86,18 +86,22 @@ export const MapContainer = (props) =>{
     setMap(map);
     searchNearby(map, map.center);
   }
+  
   return (
-        <Map google={google}
+        <Map 
+                  google={window.google} 
+                  containsLocation
+                  isLocationOnEdge
                   centerAroundCurrentLocation
                   onReady={onMapReady}
                   onCenterChanged={onMapReady}
-                  zoom={15}
+                 zoomControl
+                 fullscreenControl
                   scrollwheel
-
-                  style={{ height: "100vh", width: "100%" }}
-
+                  style={{ width: '100%', height: '100%', position: 'relative'}}
                   {...props}
           >
+        
             {restaurants.map( (restaurant) => (
                  <Marker
                   key={restaurant.place_id}
@@ -108,7 +112,12 @@ export const MapContainer = (props) =>{
                   }}
                  />
             ))}
-
+            <Marker
+          onClick={onMapReady}
+          draggable={true}
+          name={"Current location"}
+        />
+        
           </Map>
   )
 }

@@ -1,5 +1,4 @@
 import styled  from "styled-components";
-import px2vw from "../../styles/px2vw";
 
  export const Wrapper = styled.div `
    display: flex;
@@ -29,6 +28,8 @@ export const Logo = styled.img`
 export const Map = styled.div`
   height: 100vh;
   width: 100vw;
+  position:relative;
+  overflow-x: hidden;
 `;
 export const CarouselTitle = styled.h1`
  font-family: ${(props) => props.theme.fonts.regular};

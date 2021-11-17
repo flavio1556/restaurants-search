@@ -3,8 +3,6 @@ import {  useSelector } from 'react-redux';
 import logo from '../../assets/logo.svg'
 import TextField, {Input} from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
-import FormControl, { useFormControl } from '@mui/material/FormControl';
-import Box from '@mui/material/Box';
 import  SliderSeach from '../../components/Slider/Index';
 import { RestaurantCard, Modal, MapContainer, Loader, Skeleton} from '../../components'
 import  {Container, Seach, Logo, Wrapper, CarouselTitle, Map, ModalTitle,ModalContent, ModalFechar} from "./styles";
@@ -66,7 +64,7 @@ const Home  = () => {
      if(restaurantSelected){
        return (
          <>
-                     <ModalFechar onClick={() => setModalOpen(!modalOpened)}> </ModalFechar>
+                     <ModalFechar onClick={() => setModalOpen(!modalOpened)}>X </ModalFechar>
                      <ModalTitle> {restaurantSelected.name } </ModalTitle>
                      <ModalContent>{restaurantSelected.formatted_address } </ModalContent>
                      <ModalContent>{ restaurantSelected.formatted_phone_number } </ModalContent>
@@ -77,10 +75,10 @@ const Home  = () => {
      else{
        return (
          <>
-                <Skeleton width="10px" heigth="10px" />
-                <Skeleton width="10px" heigth="10px" />
-                <Skeleton width="10px" heigth="10px" />
-                <Skeleton width="10px" heigth="10px" />
+                <Skeleton  width="1vh" heigth="1vh" />
+                <Skeleton  width="1vh" heigth="1vh" />
+                <Skeleton  width="1vh" heigth="1vh" />
+                <Skeleton  width="1vh" heigth="1vh" />
          </>
        )
      }
@@ -94,6 +92,7 @@ const Home  = () => {
 
                     <TextField
                           sx={{ width: "100%"}}
+                          fullWidth
                             label='Pesquisar'
                              outlined
                             trailingIcon={icon ?  <MaterialIcon role="button" icon="search" /> : null}
